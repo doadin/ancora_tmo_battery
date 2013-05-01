@@ -3605,6 +3605,11 @@ static int __devexit msm_batt_remove(struct platform_device *pdev)
 	return 0;
 }
 
+static void msm_batt_shutdown(struct platform_device *pdev)
+{
+  del_timer_sync(&msm_batt_info.timer);
+}
+
 static const struct dev_pm_ops msm_bat_pm_ops = {
 	.suspend = msm_batt_suspend,
 	.resume = msm_batt_resume,
